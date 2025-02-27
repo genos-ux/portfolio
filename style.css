@@ -1,6 +1,14 @@
 body {
     font-family: 'Inter', sans-serif;
   }
+
+#links *:hover{
+    border-bottom: 3px solid red;
+}
+
+#resume:hover{
+    border-bottom: 3px solid red;
+}
   .gradient-text {
     background: linear-gradient(90deg, #c471ed 0%, #f64f59 100%);
     -webkit-background-clip: text;
