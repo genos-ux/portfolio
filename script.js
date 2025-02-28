@@ -248,6 +248,68 @@
 
     })
 
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const logo = document.getElementById("logo");
+
+    // Function to handle scroll effects
+    function onScroll() {
+      // Logo visibility
+      if (window.scrollY > 50) {
+        logo.classList.add("opacity-0", "invisible");
+        logo.classList.remove("opacity-100", "visible");
+      } else {
+        logo.classList.add("opacity-100", "visible");
+        logo.classList.remove("opacity-0", "invisible");
+      }
+
+      // Active section highlighting
+      let currentSection = "";
+      const scrollPosition = window.scrollY + 100; // Offset for better UX
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          currentSection = section.getAttribute("id");
+        }
+      });
+
+      // Update active nav link
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("data-section") === currentSection) {
+          link.classList.add("active");
+        }
+      });
+    }
+
+    // Smooth scrolling when clicking nav links
+    navLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+          window.scrollTo({
+            top: targetSection.offsetTop - 80, // Offset for navbar height
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+
+    // Listen for scroll events
+    window.addEventListener("scroll", onScroll);
+
+    // Initial call to set active state on page load
+    onScroll();
+
     });
 
 

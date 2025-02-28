@@ -23,17 +23,21 @@
 </head>
 <body class="bg-white">
   <!-- Navigation Bar -->
-  <nav class="container mx-auto px-6 py-4">
-    <div class="flex justify-between items-center">
-      <div class="flex items-center">
+  <nav class="fixed top-0 left-0 right-0 backdrop-blur-md bg-white/70 shadow-sm z-50">
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex justify-center items-center">
+      <!-- Logo that disappears on scroll with JavaScript -->
+      <div class="flex items-center absolute left-6 transition-opacity duration-300" id="logo">
         <span class="text-2xl font-bold"><span class="text-black">&lt;Gab</span><span class="text-pink-500">riel</span><span class="text-black">/&gt;</span></span>
       </div>
-      <div class="hidden md:flex items-center space-x-10" id="links">
-        <a href="#about" class="font-medium">About</a>
-        <a href="#services" class="font-medium">Services</a>
-        <a href="#projects" class="font-medium">Projects</a>
-        <a href="#experience" class="font-medium">Experience</a>
-        <a href="#contact" class="flex items-center font-medium">
+      
+      <!-- Centered navigation links -->
+      <div class="flex items-center space-x-10" id="links">
+        <a href="#about" class="font-medium transition hover:text-pink-500 nav-link" data-section="about">About</a>
+        <a href="#services" class="font-medium transition hover:text-pink-500 nav-link" data-section="services">Services</a>
+        <a href="#projects" class="font-medium transition hover:text-pink-500 nav-link" data-section="projects">Projects</a>
+        <a href="#experience" class="font-medium transition hover:text-pink-500 nav-link" data-section="experience">Experience</a>
+        <a href="#contact" class="flex items-center font-medium transition hover:text-pink-500 nav-link" data-section="contact">
           Book a call
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -41,10 +45,36 @@
         </a>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
+
+<style>
+  /* Active link style with underline */
+  .nav-link.active {
+    position: relative;
+    color: rgb(236, 72, 153); /* Tailwind pink-500 */
+  }
+  
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(236, 72, 153); /* Tailwind pink-500 */
+  }
+</style>
+
+<!-- JavaScript to hide the logo on scroll and highlight active sections -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+  });
+</script>
 
   <!-- Hero Section -->
-  <section class="container mx-auto px-6 py-12 md:py-20">
+  <section class="container mx-auto px-6 py-12 md:py-20" style="margin-top: 20px;">
     <div class="flex flex-col md:flex-row items-center justify-between">
       <div class="md:w-1/2 mb-10 md:mb-0">
         <h4 class="text-3xl md:text-6xl font-bold leading-tight mb-6 typing-container">
@@ -94,7 +124,7 @@
       <h3 class="text-5xl font-bold max-w-3xl  leading-tight">
         Code that solves problems,
         <br>one product at a time.
-      </h3>
+      </h3> 
     </div>
 
     <!-- Services Grid -->

@@ -3,11 +3,13 @@ body {
   }
 
 #links *:hover{
-    border-bottom: 3px solid red;
+    border-bottom: 3px solid pink;
+    position: relative;
+    top: 30px;
 }
 
 #resume:hover{
-    border-bottom: 3px solid red;
+    border-bottom: 3px solid pink;
 }
   .gradient-text {
     background: linear-gradient(90deg, #c471ed 0%, #f64f59 100%);
